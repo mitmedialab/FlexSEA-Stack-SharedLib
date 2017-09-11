@@ -40,45 +40,10 @@ extern "C" {
 // flexsea-comm or flexsea-system, as it needs to be unique to each board.
 
 //****************************************************************************
-// Include(s)
-//****************************************************************************
-
-#ifdef BUILD_DLL
-#include <stdint.h>
-#include "../flexsea-comm/inc/flexsea_comm.h"
-//#include "../flexsea-comm/inc/flexsea.h"
-#endif
-
-//****************************************************************************
-// Prototype(s):
-//****************************************************************************
-
-void flexsea_send_serial_slave(PacketWrapper* p) __attribute__((weak));
-void flexsea_send_serial_master(PacketWrapper* p)__attribute__((weak));
-
-#ifdef BUILD_DLL
-uint8_t getBoardID(void);
-uint8_t getBoardUpID(void);
-uint8_t getBoardSubID(uint8_t sub, uint8_t idx);
-uint8_t getSlaveCnt(uint8_t sub);
-#endif	//BUILD_DLL
-
-//****************************************************************************
 // Definition(s):
 //****************************************************************************
 
-#ifdef BUILD_DLL
-
-//How many slave busses?
-#define COMM_SLAVE_BUS				2
-
-//How many slaves on this bus?
-#define SLAVE_BUS_1_CNT				1
-#define SLAVE_BUS_2_CNT				0
-//Note: only Manage can have a value different than 0 or 1
-
-//How many possible masters?
-#define COMM_MASTERS				3
+#ifdef BUILD_SHARED_LIB_DLL
 
 //Enabled the required FlexSEA Buffers for this board:
 #define ENABLE_FLEXSEA_BUF_1        //USB
@@ -87,11 +52,39 @@ uint8_t getSlaveCnt(uint8_t sub);
 //#define ENABLE_FLEXSEA_BUF_4      //
 //#define ENABLE_FLEXSEA_BUF_5      //
 
-#endif	//BUILD_DLL
+#endif	//BUILD_SHARED_LIB_DLL
+
+//****************************************************************************
+// Include(s)
+//****************************************************************************
+
+#ifdef BUILD_SHARED_LIB_DLL
+#include <stdint.h>
+#include "../flexsea-comm/inc/flexsea_comm.h"
+//#include "../flexsea-comm/inc/flexsea.h"
+#endif	//BUILD_SHARED_LIB_DLL
+
+//****************************************************************************
+// Prototype(s):
+//****************************************************************************
+
+void flexsea_send_serial_slave(PacketWrapper* p);
+void flexsea_send_serial_master(PacketWrapper* p);
+
+#ifdef BUILD_SHARED_LIB_DLL
+uint8_t getBoardID(void);
+uint8_t getBoardUpID(void);
+uint8_t getBoardSubID(uint8_t sub, uint8_t idx);
+uint8_t getSlaveCnt(uint8_t sub);
+#endif	//BUILD_SHARED_LIB_DLL
 
 //****************************************************************************
 // Shared variable(s)
 //****************************************************************************
+
+#ifdef BUILD_SHARED_LIB_DLL
+extern uint8_t board_id;
+#endif	//BUILD_SHARED_LIB_DLL
 
 #ifdef __cplusplus
 }

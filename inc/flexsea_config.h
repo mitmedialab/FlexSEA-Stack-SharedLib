@@ -24,30 +24,40 @@ extern "C" {
 #endif
 
 //****************************************************************************
-// Definition(s):
-//****************************************************************************
-
-
-
-//****************************************************************************
 // Include(s)
 //****************************************************************************
 
+#include <stdint.h>
+#include "flexsea.h"
 
 //****************************************************************************
 // Prototype(s):
 //****************************************************************************
 
+void initFlexSEAStack(uint8_t id, void (*fsss)(PacketWrapper* p), \
+						void (*fssm)(PacketWrapper* p));
+
+void initMasterCommDefaults(void);
+void initSlaveCommDefaults(void);
+
 void mapSendSerialSlave(void (*f)(PacketWrapper* p));
+void mapSendSerialMaster(void (*f)(PacketWrapper* p));
 
 //Used by test code:
 uint8_t setBoardID(uint8_t id);
+
+
+//****************************************************************************
+// Definition(s):
+//****************************************************************************
+
 
 //****************************************************************************
 // Shared variable(s)
 //****************************************************************************
 
-
+extern void (*externalSendSerialSlave)(PacketWrapper* p);
+extern void (*externalSendSerialMaster)(PacketWrapper* p);
 
 #ifdef __cplusplus
 }

@@ -25,16 +25,19 @@ extern "C" {
 //****************************************************************************
 
 #include <stdio.h>
-
-//#include "main.h"
+#include "flexsea_config.h"
+#include <stdint.h>
+#include "flexsea.h"
 #include "flexsea_board.h"
 #include "../../flexsea-system/inc/flexsea_system.h"
-
+#include "flexsea_user_structs.h"
 
 //****************************************************************************
 // Local variable(s)
 //****************************************************************************
 
+void (*externalSendSerialSlave)(PacketWrapper* p) = NULL;
+void (*externalSendSerialMaster)(PacketWrapper* p) = NULL;
 
 //****************************************************************************
 // External variable(s)
@@ -46,10 +49,66 @@ extern "C" {
 // Function(s)
 //****************************************************************************
 
+//This function needs to be called at the start of the host program.
+//id: sets the board_id variable. Typically, it will be FLEXSEA_PLAN_1
+//fsss: name of your flexsea_send_serial_slave implementation
+//fssm: name of your flexsea_send_serial_master implementation
+//Ex.: initFlexSEAStack(FLEXSEA_PLAN_1, flexsea_send_serial_slave,
+//						flexsea_send_serial_master);
+void initFlexSEAStack(uint8_t id, void (*fsss)(PacketWrapper* p), \
+						void (*fssm)(PacketWrapper* p))
+{
+	init_flexsea_payload_ptr();
+	initMasterCommDefaults();
+	initSlaveCommDefaults();
+	initializeGlobalStructs();
+	initializeUserStructs();
+
+	setBoardID(id);
+	mapSendSerialSlave(fsss);
+	mapSendSerialMaster(fssm);
+}
+
+//Prepares the structures:
+void initMasterCommDefaults(void)
+{
+	//SPI:
+	initCommPeriph(&commPeriph[PORT_SPI], PORT_SPI, MASTER, rx_buf_3, \
+				comm_str_3, rx_command_3, &rx_buf_circ_3, \
+				&packet[PORT_SPI][INBOUND], &packet[PORT_SPI][OUTBOUND]);
+
+	//USB:
+	initCommPeriph(&commPeriph[PORT_USB], PORT_USB, MASTER, rx_buf_4, \
+			comm_str_4, rx_command_4, &rx_buf_circ_4, \
+			&packet[PORT_USB][INBOUND], &packet[PORT_USB][OUTBOUND]);
+
+	//Bluetooth:
+	initCommPeriph(&commPeriph[PORT_WIRELESS], PORT_WIRELESS, MASTER, rx_buf_5, \
+				comm_str_5, rx_command_5, &rx_buf_circ_5, \
+				&packet[PORT_WIRELESS][INBOUND], &packet[PORT_WIRELESS][OUTBOUND]);
+}
+
+void initSlaveCommDefaults(void)
+{
+	//RS-485 #1:
+	initCommPeriph(&commPeriph[PORT_RS485_1], PORT_RS485_1, SLAVE, rx_buf_1, \
+			comm_str_1, rx_command_1, &rx_buf_circ_1, \
+			&packet[PORT_RS485_1][INBOUND], &packet[PORT_RS485_1][OUTBOUND]);
+
+	//UART:
+	initCommPeriph(&commPeriph[PORT_RS485_2], PORT_RS485_2, SLAVE, rx_buf_2, \
+			comm_str_2, rx_command_2, &rx_buf_circ_2, \
+			&packet[PORT_RS485_2][INBOUND], &packet[PORT_RS485_2][OUTBOUND]);
+}
+
 void mapSendSerialSlave(void (*f)(PacketWrapper* p))
 {
-	printf("Mapping...\n");
 	externalSendSerialSlave = f;
+}
+
+void mapSendSerialMaster(void (*f)(PacketWrapper* p))
+{
+	externalSendSerialMaster = f;
 }
 
 //Returns the previous board ID, then changes it to be 'id'

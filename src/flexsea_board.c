@@ -39,19 +39,35 @@ extern "C" {
 
 #include <stdio.h>
 
-//#include "main.h"
 #include "flexsea_board.h"
 #include "../../flexsea-system/inc/flexsea_system.h"
+#include "flexsea_config.h"
 
-//****************************************************************************
-// Local variable(s)
-//****************************************************************************
+
+//#ifdef BUILD_SHARED_LIB_DLL
+
+//How many slave busses?
+#define COMM_SLAVE_BUS				2
+
+//How many slaves on this bus?
+#define SLAVE_BUS_1_CNT				1
+#define SLAVE_BUS_2_CNT				0
+//Note: only Manage can have a value different than 0 or 1
+
+//How many possible masters?
+#define COMM_MASTERS				3
 
 //Board ID (this board) - pick from Board list in /common/inc/flexsea.h
 uint8_t board_id = FLEXSEA_PLAN_1;
 uint8_t board_up_id = FLEXSEA_DEFAULT;
 uint8_t board_sub1_id[SLAVE_BUS_1_CNT ? SLAVE_BUS_1_CNT : 1] = {FLEXSEA_MANAGE_1};
 uint8_t board_sub2_id[SLAVE_BUS_2_CNT ? SLAVE_BUS_2_CNT : 1];
+
+//#endif	//BUILD_SHARED_LIB_DLL
+
+//****************************************************************************
+// Local variable(s)
+//****************************************************************************
 
 //****************************************************************************
 // External variable(s)
@@ -65,25 +81,21 @@ uint8_t usb_rx[COMM_STR_BUF_LEN];
 // Function(s)
 //****************************************************************************
 
-/*
 //Wrapper for the specific serial functions. Useful to keep flexsea_network
 //plateform independant (for example, we don't need need puts_rs485() for Plan)
 void flexsea_send_serial_slave(PacketWrapper* p)
 {
-  (void) p;
-	//The current implementation of FlexSEA-Plan doesn't require this function,
-	//the different windows simply emit a signal to the serial driver. We are
-	//Keeping this here for compatibility reasons.
-
-	return;
+	//printf("DLL's flexsea_send_serial_slave()\n");
+	//We pass this to the host function of the same name:
+	externalSendSerialSlave(p);
 }
 
 void flexsea_send_serial_master(PacketWrapper *p)
 {
-	//Not implemented for this board
-	(void)p;
+	printf("DLL's flexsea_send_serial_master()\n");
+	//We pass this to the host function of the same name:
+	externalSendSerialMaster(p);
 }
-*/
 
 uint8_t getBoardID(void)
 {
