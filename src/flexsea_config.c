@@ -32,6 +32,8 @@ extern "C" {
 #include "../../flexsea-system/inc/flexsea_system.h"
 #include "flexsea_user_structs.h"
 
+#include "flexsea_payload.h"
+
 //****************************************************************************
 // Local variable(s)
 //****************************************************************************

@@ -46,7 +46,6 @@ void mapSendSerialMaster(void (*f)(PacketWrapper* p));
 //Used by test code:
 uint8_t setBoardID(uint8_t id);
 
-
 //****************************************************************************
 // Definition(s):
 //****************************************************************************
