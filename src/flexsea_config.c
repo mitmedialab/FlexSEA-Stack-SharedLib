@@ -41,6 +41,9 @@ extern "C" {
 void (*externalSendSerialSlave)(PacketWrapper* p) = NULL;
 void (*externalSendSerialMaster)(PacketWrapper* p) = NULL;
 
+//Test - simple structure: *** ToDo remove ***
+struct testStruct_s testStruct;
+
 //****************************************************************************
 // Private function prototype(s)
 //****************************************************************************
@@ -125,6 +128,25 @@ uint8_t setBoardID(uint8_t id)
 	uint8_t tmp = board_id;
 	board_id = id;
 	return tmp;
+}
+
+//Test - simple structure: *** ToDo remove ***
+void fillTestStructure(void)
+{
+	testStruct.a = 45000;
+	testStruct.b = 200000;
+	testStruct.c = -5;
+	testStruct.d = 40;
+	testStruct.e = &testStruct.d;
+	testStruct.f[0] = 1;
+	testStruct.f[1] = 2;
+	testStruct.f[2] = 3;
+	testStruct.f[3] = 4;
+}
+
+void getTestStructure(struct testStruct_s *s)
+{
+	(*s) = testStruct;
 }
 
 //****************************************************************************

@@ -47,10 +47,23 @@ void mapSendSerialMaster(void (*f)(PacketWrapper* p));
 //Used by test code:
 uint8_t setBoardID(uint8_t id);
 
+//Test - simple structure: *** ToDo remove ***
+void fillTestStructure(void);
+
 //****************************************************************************
 // Definition(s):
 //****************************************************************************
 
+//Test - simple structure: *** ToDo remove ***
+struct testStruct_s
+{
+	uint16_t a;
+	int32_t b;
+	int8_t c;
+	int32_t d;
+	int32_t* e;
+	int16_t f[8];
+};
 
 //****************************************************************************
 // Shared variable(s)
@@ -58,6 +71,12 @@ uint8_t setBoardID(uint8_t id);
 
 extern void (*externalSendSerialSlave)(PacketWrapper* p);
 extern void (*externalSendSerialMaster)(PacketWrapper* p);
+
+//Test - simple structure: *** ToDo remove ***
+extern struct testStruct_s testStruct;
+
+//Test - simple structure: *** ToDo remove ***
+void getTestStructure(struct testStruct_s *s);
 
 #ifdef __cplusplus
 }
