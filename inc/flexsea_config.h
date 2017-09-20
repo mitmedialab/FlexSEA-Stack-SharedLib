@@ -36,6 +36,7 @@ extern "C" {
 
 void initFlexSEAStack(uint8_t id, void (*fsss)(PacketWrapper* p), \
 						void (*fssm)(PacketWrapper* p));
+void initFlexSEAStack_minimalist(uint8_t id);
 
 void initMasterCommDefaults(void);
 void initSlaveCommDefaults(void);

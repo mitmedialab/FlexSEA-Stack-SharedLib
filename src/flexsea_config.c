@@ -42,10 +42,11 @@ void (*externalSendSerialSlave)(PacketWrapper* p) = NULL;
 void (*externalSendSerialMaster)(PacketWrapper* p) = NULL;
 
 //****************************************************************************
-// External variable(s)
+// Private function prototype(s)
 //****************************************************************************
 
-
+static void flexsea_send_serial_null(PacketWrapper* p);
+static void coreFlexSEAInit(uint8_t id);
 
 //****************************************************************************
 // Function(s)
@@ -60,15 +61,20 @@ void (*externalSendSerialMaster)(PacketWrapper* p) = NULL;
 void initFlexSEAStack(uint8_t id, void (*fsss)(PacketWrapper* p), \
 						void (*fssm)(PacketWrapper* p))
 {
-	init_flexsea_payload_ptr();
-	initMasterCommDefaults();
-	initSlaveCommDefaults();
-	initializeGlobalStructs();
-	initializeUserStructs();
-
-	setBoardID(id);
+	coreFlexSEAInit(id);
 	mapSendSerialSlave(fsss);
 	mapSendSerialMaster(fssm);
+}
+
+//If you do not wish to provide fsss & fssm, use this version.
+//Note: you won't be able to use packAndSend(). Use pack() and 'manually'
+//send and receive your packets.
+void initFlexSEAStack_minimalist(uint8_t id)
+{
+	coreFlexSEAInit(id);
+	//Default catch - won't crash, but won't send data:
+	mapSendSerialSlave(flexsea_send_serial_null);
+	mapSendSerialMaster(flexsea_send_serial_null);
 }
 
 //Prepares the structures:
@@ -119,6 +125,25 @@ uint8_t setBoardID(uint8_t id)
 	uint8_t tmp = board_id;
 	board_id = id;
 	return tmp;
+}
+
+//****************************************************************************
+// Private Function(s)
+//****************************************************************************
+
+//When the Host code doesn't want to implement flexsea_send_serial_x() we
+//redirect the code here:
+static void flexsea_send_serial_null(PacketWrapper* p){};
+
+static void coreFlexSEAInit(uint8_t id)
+{
+	init_flexsea_payload_ptr();
+	initMasterCommDefaults();
+	initSlaveCommDefaults();
+	initializeGlobalStructs();
+	initializeUserStructs();
+
+	setBoardID(id);
 }
 
 #ifdef __cplusplus
