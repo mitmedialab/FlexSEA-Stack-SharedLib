@@ -31,8 +31,9 @@ extern "C" {
 #include "flexsea_board.h"
 #include "../../flexsea-system/inc/flexsea_system.h"
 #include "flexsea_user_structs.h"
-
+#include "flexsea_cmd_user.h"
 #include "flexsea_payload.h"
+#include "cmd-Rigid.h"
 
 //****************************************************************************
 // Local variable(s)
@@ -164,6 +165,8 @@ static void coreFlexSEAInit(uint8_t id)
 	initSlaveCommDefaults();
 	initializeGlobalStructs();
 	initializeUserStructs();
+
+	init_rigid();
 
 	setBoardID(id);
 }
