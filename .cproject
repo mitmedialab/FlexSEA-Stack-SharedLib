@@ -34,6 +34,11 @@
 							<tool id="cdt.managedbuild.tool.gnu.c.compiler.mingw.so.debug.891199055" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.so.debug">
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.mingw.so.debug.option.optimization.level.1488559267" name="Optimization Level" superClass="gnu.c.compiler.mingw.so.debug.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
 								<option id="gnu.c.compiler.mingw.so.debug.option.debugging.level.284584378" name="Debug Level" superClass="gnu.c.compiler.mingw.so.debug.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
+								<option id="gnu.c.compiler.option.preprocessor.def.symbols.376969142" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="BUILD_SHARED_LIB_DLL"/>
+									<listOptionValue builtIn="false" value="BOARD_TYPE_FLEXSEA_PLAN"/>
+									<listOptionValue builtIn="false" value="TEST_PC"/>
+								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.2036535193" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.so.debug.1702537076" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.so.debug">
@@ -88,6 +93,7 @@
 								<option id="gnu.c.compiler.option.include.paths.1932171282" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="../inc"/>
 									<listOptionValue builtIn="false" value="../flexsea-comm/inc"/>
+									<listOptionValue builtIn="false" value="../flexsea-user/ActPack/inc"/>
 									<listOptionValue builtIn="false" value="../flexsea-user/CycleTester/inc"/>
 									<listOptionValue builtIn="false" value="../flexsea-user/DpEb21/inc"/>
 									<listOptionValue builtIn="false" value="../flexsea-user/DpEb31/inc"/>
@@ -101,6 +107,7 @@
 								</option>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.1384786910" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="BUILD_SHARED_LIB_DLL"/>
+									<listOptionValue builtIn="false" value="INCLUDE_UPROJ_ACTPACK"/>
 									<listOptionValue builtIn="false" value="BOARD_TYPE_FLEXSEA_PLAN"/>
 									<listOptionValue builtIn="false" value="TEST_PC"/>
 								</option>
