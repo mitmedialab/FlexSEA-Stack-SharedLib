@@ -305,7 +305,7 @@
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="refreshScope" versionNumber="2">
-		<configuration configurationName="RPI">
+		<configuration configurationName="ReleaseLinux">
 			<resource resourceType="PROJECT" workspacePath="/FlexSEA-Stack-SharedLib"/>
 		</configuration>
 		<configuration configurationName="Debug">
@@ -320,9 +320,6 @@
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.so.debug.156940721;cdt.managedbuild.config.gnu.mingw.so.debug.156940721.;cdt.managedbuild.tool.gnu.c.compiler.mingw.so.debug.891199055;cdt.managedbuild.tool.gnu.c.compiler.input.2036535193">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.so.release.1164911303;cdt.managedbuild.config.gnu.mingw.so.release.1164911303.;cdt.managedbuild.tool.gnu.c.compiler.base.1350244294;cdt.managedbuild.tool.gnu.c.compiler.input.1721707232">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.so.release.1164911303;cdt.managedbuild.config.gnu.mingw.so.release.1164911303.;cdt.managedbuild.tool.gnu.c.compiler.mingw.so.release.2041746294;cdt.managedbuild.tool.gnu.c.compiler.input.292330747">
