@@ -122,6 +122,7 @@
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
 								</inputType>
+								<outputType id="cdt.managedbuild.tool.gnu.c.linker.mingw.so.output.base.2108857676" outputPrefix="" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.so.output.base"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base.1265120432" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base">
 								<option defaultValue="true" id="gnu.cpp.link.option.shared.184400701" name="Shared (-shared)" superClass="gnu.cpp.link.option.shared" valueType="boolean"/>
@@ -410,6 +411,9 @@
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.so.debug.156940721;cdt.managedbuild.config.gnu.mingw.so.debug.156940721.;cdt.managedbuild.tool.gnu.c.compiler.mingw.so.debug.891199055;cdt.managedbuild.tool.gnu.c.compiler.input.2036535193">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.so.release.1164911303;cdt.managedbuild.config.gnu.mingw.so.release.1164911303.;cdt.managedbuild.tool.gnu.c.compiler.base.1350244294;cdt.managedbuild.tool.gnu.c.compiler.input.1721707232">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.so.release.1164911303;cdt.managedbuild.config.gnu.mingw.so.release.1164911303.;cdt.managedbuild.tool.gnu.c.compiler.mingw.so.release.2041746294;cdt.managedbuild.tool.gnu.c.compiler.input.292330747">
