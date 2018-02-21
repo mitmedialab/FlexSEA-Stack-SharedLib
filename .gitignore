@@ -1,0 +1,8 @@
+/Debug/
+/RPI/
+/Release/
+/ReleaseLinux/
+*.o
+*.mk
+*~
+*.bak
