@@ -1,7 +1,13 @@
+#Run this script after compiling the library. It will prepare the 'lib' folder
+#needed by the host program.
+
 import os
 import shutil
 
-#Project status: code finds all relevant directories. No copying yet.
+#Folders:
+incFolder = 'inc'
+libFolder = 'lib'
+submodulesFolders = ['flexsea-comm', 'flexsea-shared', 'flexsea-system', 'flexsea-projects']
 
 #Find all directories in this path (recursive):
 def listDirectories(bp, dl):
@@ -27,7 +33,6 @@ def numOfDotH():
 def removeDirWithoutHeaders(d):
 	c = []
 	entryPath = os.getcwd()
-	#print('\n\n >>> removeDirWithoutHeaders:')
 	for u in range (0, len(d)):
 		#print("Calling chdir on:", d[u][1:])
 		os.chdir(d[u][1:])
@@ -38,7 +43,6 @@ def removeDirWithoutHeaders(d):
 		os.chdir('..')
 		os.chdir(entryPath) #Make sure to exit at the level we entered
 	return c
-	#print('<<<<<<<<<<<')
 
 #Creates new directories based on list
 def createNewDirectories(destPath, subm, d):
@@ -57,40 +61,70 @@ def createNewDirectories(destPath, subm, d):
 	
 	os.chdir(entryPath) #Make sure to exit at the level we entered
 
+def copyHeaderFiles(destPath, subm, d):
+	entryPath = os.getcwd()	
+	for u in range (0, len(d)):
+		print("Calling chdir on:", d[u][1:])
+		os.chdir(d[u][1:])
+		currPath = os.getcwd()
+		#print("Searching in", currPath)
+		for file in os.listdir():
+			if file.endswith(".h"):
+				p = destPath + '\\' + subm + '\\' + d[u][1:]
+				p = p.replace('/','\\')
+				shutil.copy(file,p)
+				print("Copied:", file, "to", p)
+		
+		os.chdir('..')
+		os.chdir(entryPath) #Make sure to exit at the level we entered
+	
 #Main:
 #===============================================
 
-print("\n>>> Populate Header Folder v0.1 <<<\n")
+print("\n>>> Populate Lib Folder v0.1 <<<")
+print("\n>>> ======================== <<<\n")
 basePath = os.getcwd()
 print(basePath)
 
-submodulesDir = ['flexsea-comm', 'flexsea-shared', 'flexsea-system', 'flexsea-projects']
-
 #Prepare destination:
-directory = 'Headers'
-if not os.path.exists(directory):
-	print('Created new directory')
-	os.makedirs(directory)
+if not os.path.exists(libFolder):
+	print('Created new libFolder')
+	os.makedirs(libFolder)
 else:
-	print('Deleting existing directory and creating new (empty) version')
-	shutil.rmtree(directory)
-	os.makedirs(directory)
+	print('Deleting existing libFolder and creating new (empty) version')
+	shutil.rmtree(libFolder)
+	os.makedirs(libFolder)
 
-os.chdir(directory)
+os.chdir(libFolder)
 destPath = os.getcwd()
 print('Destination path: ' + destPath + '\n')
 os.chdir('..\..')	#Move to base folder
 
-#Main program: go through all submodules, find headers, and copy them to destination
-for x in range(0,len(submodulesDir)):
-	os.chdir(submodulesDir[x])
+#Go through all submodules, find headers, and copy them to destination
+print("\n>> Copy headers from submodules: <<\n")
+for x in range(0,len(submodulesFolders)):
+	os.chdir(submodulesFolders[x])
 	currPath = os.getcwd()
 	print("Searching in", currPath)
 	dirList = []
 	d = listDirectories('/',dirList)
 	#print('dirList:',d)
 	cleanList = removeDirWithoutHeaders(d)
-	print('Clean list:',cleanList)
-	createNewDirectories(destPath, submodulesDir[x], cleanList)
+	print('Directories with headers:',cleanList)
+	createNewDirectories(destPath, submodulesFolders[x], cleanList)
+	copyHeaderFiles(destPath, submodulesFolders[x], cleanList)
 	os.chdir('..')
 	print('\n')
+
+#Handle files that are in /inc
+print("\n>> Copy headers from inc: <<\n")
+os.chdir(basePath)
+os.chdir('..')
+#os.chdir(incFolder)
+print(os.getcwd())
+#copyHeaderFiles(destPath, 'inc', incFolder) ToDo incomplete/doesn't work
+
+#Move DLL and .so
+print("\n>> Copy DLL and .so: <<\n")
+
+print("Done!")
