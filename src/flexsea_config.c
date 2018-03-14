@@ -34,6 +34,7 @@ extern "C" {
 #include "flexsea_cmd_user.h"
 #include "flexsea_payload.h"
 #include "cmd-Rigid.h"
+#include "cmd-Pocket.h"
 
 //****************************************************************************
 // Local variable(s)
@@ -145,6 +146,7 @@ static void coreFlexSEAInit(uint8_t id)
 	initializeUserStructs();
 
 	init_rigid();
+	init_pocket();
 
 	setBoardID(id);
 }
