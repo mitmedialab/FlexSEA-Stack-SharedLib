@@ -13,7 +13,7 @@ submodulesFolders = ['flexsea-comm', 'flexsea-shared', 'flexsea-system', 'flexse
 def listDirectories(bp, dl):
 	a = os.listdir()
 	for i in range(0, len(a)):
-		if(os.path.isdir(a[i])):
+		if(os.path.isdir(a[i]) and a[i] != '.git'):
 			dl.append(bp+a[i])
 			#print('Found: '+bp+a[i])
 			os.chdir(a[i])
