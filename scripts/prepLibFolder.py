@@ -8,6 +8,9 @@ import shutil
 incFolder = 'inc'
 libFolder = 'lib'
 submodulesFolders = ['flexsea-comm', 'flexsea-shared', 'flexsea-system', 'flexsea-projects']
+#Specific files:
+specFileNameList = ['flexsea_board.h', 'flexsea_config.h', 'FlexSEA-Stack-Plan.dll']
+specFileLocList = ['inc', 'inc', 'Release']
 
 #Find all directories in this path (recursive):
 def listDirectories(bp, dl):
@@ -116,15 +119,12 @@ for x in range(0,len(submodulesFolders)):
 	os.chdir('..')
 	print('\n')
 
-#Handle files that are in /inc
-print("\n>> Copy headers from inc: <<\n")
+#Handle specific file list:
 os.chdir(basePath)
 os.chdir('..')
-#os.chdir(incFolder)
-print(os.getcwd())
-#copyHeaderFiles(destPath, 'inc', incFolder) ToDo incomplete/doesn't work
-
-#Move DLL and .so
-print("\n>> Copy DLL and .so: <<\n")
+#print(os.getcwd())
+for y in range (0, len(specFileLocList)):
+	f = specFileLocList[y] + '\\' + specFileNameList[y] 
+	shutil.copy(f,destPath)
 
 print("Done!")
