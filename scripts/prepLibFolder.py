@@ -7,10 +7,10 @@ import shutil
 #Folders:
 incFolder = 'inc'
 libFolder = 'lib'
-submodulesFolders = ['flexsea-comm', 'flexsea-shared', 'flexsea-system', 'flexsea-projects']
+submodulesFolders = ['flexsea-comm', 'flexsea-shared', 'flexsea-system', 'flexsea-projects', 'flexsea-dephy']
 #Specific files:
-specFileNameList = ['flexsea_board.h', 'flexsea_config.h', 'FlexSEA-Stack-Plan.dll']
-specFileLocList = ['inc', 'inc', 'Release']
+specFileNameList = ['flexsea_board.h', 'flexsea_config.h', 'libFlexSEA-Stack-Plan.a']
+specFileLocList = ['inc', 'inc', 'Release_static']
 
 #Find all directories in this path (recursive):
 def listDirectories(bp, dl):

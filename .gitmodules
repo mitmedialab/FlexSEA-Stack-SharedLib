@@ -13,3 +13,6 @@
 [submodule "flexsea-projects"]
 	path = flexsea-projects
 	url = https://github.com/DephyInc/flexsea-projects.git
+[submodule "flexsea-dephy"]
+	path = flexsea-dephy
+	url = https://github.com/DephyInc/flexsea-dephy.git

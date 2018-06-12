@@ -574,6 +574,9 @@
 							<tool id="cdt.managedbuild.tool.gnu.c.compiler.mingw.base.978441655" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.base">
 								<option id="gnu.c.compiler.option.include.paths.167901958" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="../inc"/>
+									<listOptionValue builtIn="false" value="../flexsea-dephy/inc"/>
+									<listOptionValue builtIn="false" value="../flexsea-dephy/DpEb42/inc"/>
+									<listOptionValue builtIn="false" value="../flexsea-dephy/CycleTester/inc"/>
 									<listOptionValue builtIn="false" value="../flexsea-comm/inc"/>
 									<listOptionValue builtIn="false" value="../flexsea-projects/ActPack/inc"/>
 									<listOptionValue builtIn="false" value="../flexsea-projects/MIT_2DoF_Ankle_v1/inc"/>
@@ -585,14 +588,15 @@
 								</option>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.1641549209" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="BUILD_SHARED_LIB_DLL"/>
+									<listOptionValue builtIn="false" value="TEST_PC"/>
+									<listOptionValue builtIn="false" value="DEPHY"/>
 									<listOptionValue builtIn="false" value="INCLUDE_UPROJ_ACTPACK"/>
 									<listOptionValue builtIn="false" value="BOARD_TYPE_FLEXSEA_PLAN"/>
-									<listOptionValue builtIn="false" value="TEST_PC"/>
 								</option>
 								<option defaultValue="gnu.c.optimization.level.most" id="gnu.c.compiler.option.optimization.level.1427330536" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.debugging.level.1294259515" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.none" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.dialect.std.1530272854" name="Language standard" superClass="gnu.c.compiler.option.dialect.std" useByScannerDiscovery="true" value="gnu.c.compiler.dialect.default" valueType="enumerated"/>
-								<option id="gnu.c.compiler.option.misc.pic.819743467" superClass="gnu.c.compiler.option.misc.pic" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="gnu.c.compiler.option.misc.pic.819743467" name="Position Independent Code (-fPIC)" superClass="gnu.c.compiler.option.misc.pic" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1918699260" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.base.2048037829" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.base">
@@ -624,10 +628,13 @@
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="refreshScope" versionNumber="2">
 		<configuration configurationName="RPI_From_Linux"/>
+		<configuration configurationName="ReleaseLinux64"/>
 		<configuration configurationName="ReleaseLinux">
 			<resource resourceType="PROJECT" workspacePath="/FlexSEA-Stack-SharedLib"/>
 		</configuration>
+		<configuration configurationName="Release_static"/>
 		<configuration configurationName="RPI"/>
+		<configuration configurationName="Release64"/>
 		<configuration configurationName="Debug">
 			<resource resourceType="PROJECT" workspacePath="/FlexSEA-Stack-SharedLib"/>
 		</configuration>
