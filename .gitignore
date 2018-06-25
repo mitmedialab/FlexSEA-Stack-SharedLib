@@ -10,3 +10,4 @@
 .settings/
 scripts/lib/
 /Release_static/
+build/
