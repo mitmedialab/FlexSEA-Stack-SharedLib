@@ -66,7 +66,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="flexsea-system/src/fm_block_allocator.c|flexsea-projects/test" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="flexsea-dephy|flexsea-system/src/fm_block_allocator.c|flexsea-projects/test" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -140,7 +140,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="flexsea-system/src/fm_block_allocator.c|flexsea-projects/test|flexsea-user/test/|flexsea-comm/test/|flexsea-system/test/" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry excluding="flexsea-dephy|flexsea-system/src/fm_block_allocator.c|flexsea-projects/test|flexsea-user/test/|flexsea-comm/test/|flexsea-system/test/" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -223,7 +223,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="flexsea-system/src/fm_block_allocator.c|flexsea-projects/test|flexsea-user/test/|flexsea-comm/test/|flexsea-system/test/" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry excluding="flexsea-dephy|flexsea-system/src/fm_block_allocator.c|flexsea-projects/test|flexsea-user/test/|flexsea-comm/test/|flexsea-system/test/" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -300,7 +300,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="flexsea-projects/test|flexsea-system/src/fm_block_allocator.c|flexsea-user/test/|flexsea-comm/test/|flexsea-system/test/" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry excluding="flexsea-dephy|flexsea-projects/test|flexsea-system/src/fm_block_allocator.c|flexsea-user/test/|flexsea-comm/test/|flexsea-system/test/" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -382,7 +382,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="flexsea-system/src/fm_block_allocator.c|flexsea-projects/test|flexsea-user/test/|flexsea-comm/test/|flexsea-system/test/" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry excluding="flexsea-dephy|flexsea-system/src/fm_block_allocator.c|flexsea-projects/test|flexsea-user/test/|flexsea-comm/test/|flexsea-system/test/" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -457,7 +457,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="flexsea-system/src/fm_block_allocator.c|flexsea-projects/test|flexsea-user/test/|flexsea-comm/test/|flexsea-system/test/" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry excluding="flexsea-dephy|flexsea-system/src/fm_block_allocator.c|flexsea-projects/test|flexsea-user/test/|flexsea-comm/test/|flexsea-system/test/" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -534,7 +534,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="flexsea-projects/test|flexsea-system/src/fm_block_allocator.c|flexsea-user/test/|flexsea-comm/test/|flexsea-system/test/" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry excluding="flexsea-dephy|flexsea-projects/test|flexsea-system/src/fm_block_allocator.c|flexsea-user/test/|flexsea-comm/test/|flexsea-system/test/" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -613,7 +613,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="flexsea-system/src/fm_block_allocator.c|flexsea-projects/test|flexsea-user/test/|flexsea-comm/test/|flexsea-system/test/" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry excluding="flexsea-dephy|flexsea-system/src/fm_block_allocator.c|flexsea-projects/test|flexsea-user/test/|flexsea-comm/test/|flexsea-system/test/" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

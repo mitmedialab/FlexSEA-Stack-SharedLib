@@ -123,6 +123,9 @@ uint8_t getSlaveCnt(uint8_t sub)
 	return 0;
 }
 
+uint8_t getDeviceId() {return FLEXSEA_PLAN_1; }
+uint8_t getDeviceType() {return 0; }
+
 #ifdef __cplusplus
 }
 #endif
