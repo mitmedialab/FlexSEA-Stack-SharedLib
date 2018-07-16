@@ -14,17 +14,17 @@ include_directories (
 	flexsea-dephy/DpEb42/inc
 	flexsea-dephy/CycleTester/inc
 
-	flexsea-comm/inc
+	biomech_flexsea-comm/inc
 
 	flexsea-projects/inc
 	flexsea-projects/ActPack/inc
 	flexsea-projects/Rigid/inc
 
-	flexsea-system/inc
+	biomech_flexsea-system/inc
 )
 
-add_subdirectory(flexsea-comm)
-add_subdirectory(flexsea-system)
+add_subdirectory(biomech_flexsea-comm)
+add_subdirectory(biomech_flexsea-system)
 add_subdirectory(flexsea-projects)
 add_subdirectory(flexsea-dephy)
 
