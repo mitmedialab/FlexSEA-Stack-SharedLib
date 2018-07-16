@@ -35,7 +35,6 @@
 //Comment the next line to use in your application:
 //#define DEBUGGING_OUTPUT
 
-#include "main.h"
 #include <stdlib.h>
 #include "trapez.h"
 
