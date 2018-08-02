@@ -587,6 +587,7 @@
 									<listOptionValue builtIn="false" value="BUILD_SHARED_LIB_DLL"/>
 									<listOptionValue builtIn="false" value="INCLUDE_UPROJ_ACTPACK"/>
 									<listOptionValue builtIn="false" value="BOARD_TYPE_FLEXSEA_PLAN"/>
+									<listOptionValue builtIn="false" value="DLEG_MULTIPACKET"/>
 									<listOptionValue builtIn="false" value="TEST_PC"/>
 								</option>
 								<option defaultValue="gnu.c.optimization.level.most" id="gnu.c.compiler.option.optimization.level.508605525" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" valueType="enumerated"/>
