@@ -1,7 +1,7 @@
 /****************************************************************************
 	[Project] FlexSEA: Flexible & Scalable Electronics Architecture
-	[Sub-project] 'plan-gui' Graphical User Interface
-	Copyright (C) 2016 Dephy, Inc. <http://dephy.com/>
+	[Sub-project] 'flexsea-comm' Communication stack
+	Copyright (C) 2017 Dephy, Inc. <http://dephy.com/>
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -21,75 +21,57 @@
 	Biomechatronics research group <http://biomech.media.mit.edu/>
 	[Contributors]
 *****************************************************************************
-	[This file] flexsea_board: configuration and functions for this
-	particular board
+	[This file] flexsea_interface: simple in & out functions
 *****************************************************************************
 	[Change log] (Convention: YYYY-MM-DD | author | comment)
-	* 2016-09-09 | jfduval | Initial GPL-3.0 release
-	*
+	* 2017-09-11 | jfduval | Initial release
 ****************************************************************************/
 
-#ifndef INC_FLEXSEA_BOARD_H
-#define INC_FLEXSEA_BOARD_H
+#ifndef INC_FLEXSEA_INTERFACE_H_
+#define INC_FLEXSEA_INTERFACE_H_
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-// Although it's a part of the FlexSEA stack that file doesn't live in
-// flexsea-comm or flexsea-system, as it needs to be unique to each board.
-
-//****************************************************************************
-// Definition(s):
-//****************************************************************************
-
-#ifdef BUILD_SHARED_LIB_DLL
-
-//Enabled the required FlexSEA Buffers for this board:
-#define ENABLE_FLEXSEA_BUF_1        //USB
-#define ENABLE_FLEXSEA_BUF_2        //SPI
-//#define ENABLE_FLEXSEA_BUF_3      //
-//#define ENABLE_FLEXSEA_BUF_4      //
-//#define ENABLE_FLEXSEA_BUF_5      //
-
-#endif	//BUILD_SHARED_LIB_DLL
-
-//****************************************************************************
-// Include(s)
-//****************************************************************************
-
-#ifdef BUILD_SHARED_LIB_DLL
 #include <stdint.h>
-//#include "../biomech_flexsea-comm/inc/flexsea_comm.h"
-#include "../flexsea-comm/inc/flexsea.h"
-#endif	//BUILD_SHARED_LIB_DLL
+#include "flexsea.h"
 
 //****************************************************************************
 // Prototype(s):
 //****************************************************************************
 
-void flexsea_send_serial_slave(PacketWrapper* p);
-void flexsea_send_serial_master(PacketWrapper* p);
+struct MultiCommPeriph_struct;
+typedef struct MultiCommPeriph_struct MultiCommPeriph;
 
-#ifdef BUILD_SHARED_LIB_DLL
-uint8_t getBoardID(void);
-uint8_t getBoardUpID(void);
-uint8_t getBoardSubID(uint8_t sub, uint8_t idx);
-uint8_t getSlaveCnt(uint8_t sub);
-uint8_t getDeviceId();
-uint8_t getDeviceType();
-#endif	//BUILD_SHARED_LIB_DLL
+void receiveFlexSEAPacket(Port p, uint8_t *newPacketFlag, \
+							uint8_t *parsedPacketFlag, uint8_t *watch);
+uint8_t receiveFlexSEABytes(uint8_t *d, uint8_t len, uint8_t autoParse);
+
+uint8_t receiveFxPacket(Port p);
+uint8_t transmitFxPacket(Port p);
+
+
+
+uint8_t receiveFxPacketByPeriph(MultiCommPeriph *cp);
+
+
+//****************************************************************************
+// Definition(s):
+//****************************************************************************
 
 //****************************************************************************
 // Shared variable(s)
 //****************************************************************************
 
-#ifdef BUILD_SHARED_LIB_DLL
-extern uint8_t board_id;
-#endif	//BUILD_SHARED_LIB_DLL
+
+//****************************************************************************
+// Macro(s):
+//****************************************************************************
+
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  //INC_FLEXSEA_BOARD_H
+#endif

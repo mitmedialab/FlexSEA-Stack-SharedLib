@@ -1,6 +1,6 @@
 /****************************************************************************
 	[Project] FlexSEA: Flexible & Scalable Electronics Architecture
-	[Sub-project] 'plan-gui' Graphical User Interface
+	[Sub-project] 'flexsea-system' System commands & functions
 	Copyright (C) 2016 Dephy, Inc. <http://dephy.com/>
 
 	This program is free software: you can redistribute it and/or modify
@@ -21,75 +21,44 @@
 	Biomechatronics research group <http://biomech.media.mit.edu/>
 	[Contributors]
 *****************************************************************************
-	[This file] flexsea_board: configuration and functions for this
-	particular board
+	[This file] flexsea_cmd_in_control: commands specific to the in control module
 *****************************************************************************
 	[Change log] (Convention: YYYY-MM-DD | author | comment)
 	* 2016-09-09 | jfduval | Initial GPL-3.0 release
-	*
+	* 2017-02-09 | dudds4 | Extracted in control commands to separate file
 ****************************************************************************/
 
-#ifndef INC_FLEXSEA_BOARD_H
-#define INC_FLEXSEA_BOARD_H
+#ifndef INC_FLEXSEA_CMD_IN_CONTROL_TOLSH
+#define INC_FLEXSEA_CMD_IN_CONTROL_TOLSH
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-// Although it's a part of the FlexSEA stack that file doesn't live in
-// flexsea-comm or flexsea-system, as it needs to be unique to each board.
-
-//****************************************************************************
-// Definition(s):
-//****************************************************************************
-
-#ifdef BUILD_SHARED_LIB_DLL
-
-//Enabled the required FlexSEA Buffers for this board:
-#define ENABLE_FLEXSEA_BUF_1        //USB
-#define ENABLE_FLEXSEA_BUF_2        //SPI
-//#define ENABLE_FLEXSEA_BUF_3      //
-//#define ENABLE_FLEXSEA_BUF_4      //
-//#define ENABLE_FLEXSEA_BUF_5      //
-
-#endif	//BUILD_SHARED_LIB_DLL
-
 //****************************************************************************
 // Include(s)
 //****************************************************************************
 
-#ifdef BUILD_SHARED_LIB_DLL
 #include <stdint.h>
-//#include "../biomech_flexsea-comm/inc/flexsea_comm.h"
-#include "../flexsea-comm/inc/flexsea.h"
-#endif	//BUILD_SHARED_LIB_DLL
 
 //****************************************************************************
 // Prototype(s):
 //****************************************************************************
 
-void flexsea_send_serial_slave(PacketWrapper* p);
-void flexsea_send_serial_master(PacketWrapper* p);
+void init_flexsea_payload_ptr_in_control(void);
 
-#ifdef BUILD_SHARED_LIB_DLL
-uint8_t getBoardID(void);
-uint8_t getBoardUpID(void);
-uint8_t getBoardSubID(uint8_t sub, uint8_t idx);
-uint8_t getSlaveCnt(uint8_t sub);
-uint8_t getDeviceId();
-uint8_t getDeviceType();
-#endif	//BUILD_SHARED_LIB_DLL
+//In Control Tool:
 
-//****************************************************************************
-// Shared variable(s)
-//****************************************************************************
+void tx_cmd_in_control_w(uint8_t *shBuf, uint8_t *cmd, uint8_t *cmdType, \
+						uint16_t *len, uint8_t select_w);
+void tx_cmd_in_control_r(uint8_t *shBuf, uint8_t *cmd, uint8_t *cmdType, \
+						uint16_t *len);
 
-#ifdef BUILD_SHARED_LIB_DLL
-extern uint8_t board_id;
-#endif	//BUILD_SHARED_LIB_DLL
+void rx_cmd_in_control_w(uint8_t *buf, uint8_t *info);
+void rx_cmd_in_control_rw(uint8_t *buf, uint8_t *info);
+void rx_cmd_in_control_rr(uint8_t *buf, uint8_t *info);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  //INC_FLEXSEA_BOARD_H
+#endif	//INC_FLEXSEA_CMD_IN_CONTROL_H

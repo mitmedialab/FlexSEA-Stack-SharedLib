@@ -1,6 +1,6 @@
 /****************************************************************************
 	[Project] FlexSEA: Flexible & Scalable Electronics Architecture
-	[Sub-project] 'plan-gui' Graphical User Interface
+	[Sub-project] 'flexsea-comm' Communication stack
 	Copyright (C) 2016 Dephy, Inc. <http://dephy.com/>
 
 	This program is free software: you can redistribute it and/or modify
@@ -21,75 +21,78 @@
 	Biomechatronics research group <http://biomech.media.mit.edu/>
 	[Contributors]
 *****************************************************************************
-	[This file] flexsea_board: configuration and functions for this
-	particular board
+	[This file] flexsea_buffers: everything related to the reception buffers
 *****************************************************************************
 	[Change log] (Convention: YYYY-MM-DD | author | comment)
 	* 2016-09-09 | jfduval | Initial GPL-3.0 release
 	*
 ****************************************************************************/
 
-#ifndef INC_FLEXSEA_BOARD_H
-#define INC_FLEXSEA_BOARD_H
+#ifndef INC_FX_BUF_H
+#define INC_FX_BUF_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-// Although it's a part of the FlexSEA stack that file doesn't live in
-// flexsea-comm or flexsea-system, as it needs to be unique to each board.
-
-//****************************************************************************
-// Definition(s):
-//****************************************************************************
-
-#ifdef BUILD_SHARED_LIB_DLL
-
-//Enabled the required FlexSEA Buffers for this board:
-#define ENABLE_FLEXSEA_BUF_1        //USB
-#define ENABLE_FLEXSEA_BUF_2        //SPI
-//#define ENABLE_FLEXSEA_BUF_3      //
-//#define ENABLE_FLEXSEA_BUF_4      //
-//#define ENABLE_FLEXSEA_BUF_5      //
-
-#endif	//BUILD_SHARED_LIB_DLL
-
 //****************************************************************************
 // Include(s)
 //****************************************************************************
 
-#ifdef BUILD_SHARED_LIB_DLL
-#include <stdint.h>
-//#include "../biomech_flexsea-comm/inc/flexsea_comm.h"
-#include "../flexsea-comm/inc/flexsea.h"
-#endif	//BUILD_SHARED_LIB_DLL
-
-//****************************************************************************
-// Prototype(s):
-//****************************************************************************
-
-void flexsea_send_serial_slave(PacketWrapper* p);
-void flexsea_send_serial_master(PacketWrapper* p);
-
-#ifdef BUILD_SHARED_LIB_DLL
-uint8_t getBoardID(void);
-uint8_t getBoardUpID(void);
-uint8_t getBoardSubID(uint8_t sub, uint8_t idx);
-uint8_t getSlaveCnt(uint8_t sub);
-uint8_t getDeviceId();
-uint8_t getDeviceType();
-#endif	//BUILD_SHARED_LIB_DLL
+#include "flexsea.h"
+#include <flexsea_circular_buffer.h>
 
 //****************************************************************************
 // Shared variable(s)
 //****************************************************************************
 
-#ifdef BUILD_SHARED_LIB_DLL
-extern uint8_t board_id;
-#endif	//BUILD_SHARED_LIB_DLL
+extern uint8_t rx_buf_1[RX_BUF_LEN];
+extern uint8_t rx_buf_2[RX_BUF_LEN];
+extern uint8_t rx_buf_3[RX_BUF_LEN];
+extern uint8_t rx_buf_4[RX_BUF_LEN];
+extern uint8_t rx_buf_5[RX_BUF_LEN];
+extern uint8_t rx_buf_6[RX_BUF_LEN];
+
+//****************************************************************************
+// Public Function Prototype(s):
+//****************************************************************************
+
+/*
+void update_rx_buf_byte_1(uint8_t new_byte);
+void update_rx_buf_array_1(uint8_t *new_array, uint32_t len);
+
+void update_rx_buf_byte_2(uint8_t new_byte);
+void update_rx_buf_array_2(uint8_t *new_array, uint32_t len);
+
+void update_rx_buf_byte_3(uint8_t new_byte);
+void update_rx_buf_array_3(uint8_t *new_array, uint32_t len);
+
+void update_rx_buf_byte_4(uint8_t new_byte);
+void update_rx_buf_array_4(uint8_t *new_array, uint32_t len);
+
+void update_rx_buf_byte_5(uint8_t new_byte);
+void update_rx_buf_array_5(uint8_t *new_array, uint32_t len);
+
+void update_rx_buf_byte_6(uint8_t new_byte);
+void update_rx_buf_array_6(uint8_t *new_array, uint32_t len);
+*/
+
+//uint8_t unwrap_buffer(uint8_t *array, uint8_t *new_array, uint32_t len);
+//void resetInputBuffer(uint8_t idx);
+
+//****************************************************************************
+// Definition(s):
+//****************************************************************************
+
+//****************************************************************************
+// New code - not integrated - test in progress:
+//****************************************************************************
+
+extern circularBuffer_t rx_buf_circ_1, rx_buf_circ_2, rx_buf_circ_3;
+extern circularBuffer_t rx_buf_circ_4, rx_buf_circ_5, rx_buf_circ_6, rx_buf_circ_7;
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  //INC_FLEXSEA_BOARD_H
+#endif

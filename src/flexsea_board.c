@@ -40,7 +40,7 @@ extern "C" {
 #include <stdio.h>
 
 #include "flexsea_board.h"
-#include "../../biomech_flexsea-system/inc/flexsea_system.h"
+#include "../../flexsea-system/inc/flexsea_system.h"
 #include "flexsea_config.h"
 
 

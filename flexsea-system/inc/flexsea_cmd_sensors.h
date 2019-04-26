@@ -1,6 +1,6 @@
 /****************************************************************************
 	[Project] FlexSEA: Flexible & Scalable Electronics Architecture
-	[Sub-project] 'plan-gui' Graphical User Interface
+	[Sub-project] 'flexsea-system' System commands & functions
 	Copyright (C) 2016 Dephy, Inc. <http://dephy.com/>
 
 	This program is free software: you can redistribute it and/or modify
@@ -21,75 +21,63 @@
 	Biomechatronics research group <http://biomech.media.mit.edu/>
 	[Contributors]
 *****************************************************************************
-	[This file] flexsea_board: configuration and functions for this
-	particular board
+	[This file] flexsea_cmd_sensors: commands specific sensors
 *****************************************************************************
 	[Change log] (Convention: YYYY-MM-DD | author | comment)
 	* 2016-09-09 | jfduval | Initial GPL-3.0 release
 	*
 ****************************************************************************/
 
-#ifndef INC_FLEXSEA_BOARD_H
-#define INC_FLEXSEA_BOARD_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-// Although it's a part of the FlexSEA stack that file doesn't live in
-// flexsea-comm or flexsea-system, as it needs to be unique to each board.
-
-//****************************************************************************
-// Definition(s):
-//****************************************************************************
-
-#ifdef BUILD_SHARED_LIB_DLL
-
-//Enabled the required FlexSEA Buffers for this board:
-#define ENABLE_FLEXSEA_BUF_1        //USB
-#define ENABLE_FLEXSEA_BUF_2        //SPI
-//#define ENABLE_FLEXSEA_BUF_3      //
-//#define ENABLE_FLEXSEA_BUF_4      //
-//#define ENABLE_FLEXSEA_BUF_5      //
-
-#endif	//BUILD_SHARED_LIB_DLL
+#ifndef INC_FLEXSEA_CMD_SENSORS_H
+#define INC_FLEXSEA_CMD_SENSORS_H
 
 //****************************************************************************
 // Include(s)
 //****************************************************************************
 
-#ifdef BUILD_SHARED_LIB_DLL
 #include <stdint.h>
-//#include "../biomech_flexsea-comm/inc/flexsea_comm.h"
-#include "../flexsea-comm/inc/flexsea.h"
-#endif	//BUILD_SHARED_LIB_DLL
 
 //****************************************************************************
 // Prototype(s):
 //****************************************************************************
 
-void flexsea_send_serial_slave(PacketWrapper* p);
-void flexsea_send_serial_master(PacketWrapper* p);
+void init_flexsea_payload_ptr_sensors(void);
 
-#ifdef BUILD_SHARED_LIB_DLL
-uint8_t getBoardID(void);
-uint8_t getBoardUpID(void);
-uint8_t getBoardSubID(uint8_t sub, uint8_t idx);
-uint8_t getSlaveCnt(uint8_t sub);
-uint8_t getDeviceId();
-uint8_t getDeviceType();
-#endif	//BUILD_SHARED_LIB_DLL
+//Switch:
+void tx_cmd_sensors_switch_w(uint8_t *shBuf, uint8_t *cmd, uint8_t *cmdType, \
+								uint16_t *len);
+void tx_cmd_sensors_switch_r(uint8_t *shBuf, uint8_t *cmd, uint8_t *cmdType, \
+								uint16_t *len);
+void rx_cmd_sensors_switch_w(uint8_t *buf, uint8_t *info);
+void rx_cmd_sensors_switch_rw(uint8_t *buf, uint8_t *info);
+void rx_cmd_sensors_switch_rr(uint8_t *buf, uint8_t *info);
+
+//Encoder:
+void tx_cmd_sensors_encoder_w(uint8_t *shBuf, uint8_t *cmd, uint8_t *cmdType, \
+								uint16_t *len, int32_t enc);
+void tx_cmd_sensors_encoder_r(uint8_t *shBuf, uint8_t *cmd, uint8_t *cmdType, \
+								uint16_t *len);
+void rx_cmd_sensors_encoder_w(uint8_t *buf, uint8_t *info);
+void rx_cmd_sensors_encoder_rw(uint8_t *buf, uint8_t *info);
+void rx_cmd_sensors_encoder_rr(uint8_t *buf, uint8_t *info);
+
+/*
+void rx_cmd_strain(uint8_t *buf);
+uint32_t tx_cmd_strain(uint8_t receiver, uint8_t cmd_type, uint8_t *buf, \
+						uint32_t len);
+*/
+
+//****************************************************************************
+// Definition(s):
+//****************************************************************************
+
+//****************************************************************************
+// Structure(s):
+//****************************************************************************
 
 //****************************************************************************
 // Shared variable(s)
 //****************************************************************************
 
-#ifdef BUILD_SHARED_LIB_DLL
-extern uint8_t board_id;
-#endif	//BUILD_SHARED_LIB_DLL
 
-#ifdef __cplusplus
-}
-#endif
-
-#endif  //INC_FLEXSEA_BOARD_H
+#endif	//INC_FLEXSEA_CMD_SENSORS_H
