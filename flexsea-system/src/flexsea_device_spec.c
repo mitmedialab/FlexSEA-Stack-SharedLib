@@ -11,6 +11,7 @@ extern "C" {
 #include "flexsea_board.h"
 #include "user-mn-MIT-DLeg.h"
 #include "user-mn-MIT-EMG.h"
+#include "state_variables.h"
 
 #define IS_FIELD_HIGH(i, map) ( (map)[(i)/32] & (1 << ((i)%32)) )
 #define SET_MAP_HIGH(i, map) ( (map)[(i)/32] |= (1 << ((i)%32)) )
@@ -35,12 +36,12 @@ FlexseaDeviceSpec fx_none_spec = {
 #ifdef DEPHY
 #define _rigid_numFields 36
 #elif (defined DLEG_MULTIPACKET)
-#define _rigid_numFields 43
+#define _rigid_numFields 45
 #else
 #define _rigid_numFields 28
 #endif // DEPHY
 																																	//NUMFIELDS RUNNING_TOTAL
-const char* _rigid_fieldlabels[_rigid_numFields] = 		{"board id", 			"devId",											// METADATA			2 2
+const char* _rigid_fieldlabels[_rigid_numFields] = 		{"rigid", 			"id",											// METADATA			2 2
 														"state_time",																// STATE TIME		1 3
 														"accelx", 	"accely", 	"accelz", 	"gyrox", 	"gyroy", 	"gyroz",		// IMU				6 9
 
@@ -56,10 +57,11 @@ const char* _rigid_fieldlabels[_rigid_numFields] = 		{"board id", 			"devId",			
 														"cur_stpt",	"step_energy", "walking_state", "gait_state" 					// CONTROLLER		4 36
 
 #elif (defined DLEG_MULTIPACKET)
-														"intJointAngleDegrees", "intJointVelDegrees", "intJointTorque",				// INT ACTUATOR		3 31
-														"safetyFlag", "desiredJointAngleDeg", "desiredJointK", "desiredJointB",		// ACTUATOR			4 35
+														"intJointAngleDegrees", "intCrankVel", "intJointTorque",				// INT ACTUATOR		3 31
+														"intTauDes", "desiredJointAngleDeg", "desiredJointK", "desiredJointB",		// ACTUATOR			4 35
 														"emg_0", "emg_1", "emg_2", "emg_3", "emg_4",								// EMG				5 40
-														"emg_5", "emg_6", "emg_7"													// EMG				3 43
+														"emg_5", "emg_6", "emg_7",													// EMG				3 43
+														"intCrankAngleDegrees", "axialForce"										//2dof ankle		2 45
 
 #endif
 };
@@ -81,10 +83,11 @@ const uint8_t _rigid_field_formats[_rigid_numFields] =	{FORMAT_8U, 	FORMAT_8U,		
 
 #elif (defined DLEG_MULTIPACKET)
 
-														FORMAT_16S, FORMAT_16S, FORMAT_16S,											// INT ACTUATOR		3 31
-														FORMAT_8S, FORMAT_16S, FORMAT_16U, FORMAT_16U,								// ACTUATOR			4 35
+														FORMAT_16S, FORMAT_32S, FORMAT_16S,											// INT ACTUATOR		3 31
+														FORMAT_16S, FORMAT_16S, FORMAT_16U, FORMAT_16U,								// ACTUATOR			4 35
 														FORMAT_16S, FORMAT_16S, FORMAT_16S, FORMAT_16S, FORMAT_16S,					// EMG				5 40
-														FORMAT_16S, FORMAT_16S, FORMAT_16S											// EMG				3 43
+														FORMAT_16S, FORMAT_16S, FORMAT_16S,											// EMG				3 43
+														FORMAT_16S, FORMAT_32S														// 2dof ankle		2 45
 #endif
 };
 
@@ -117,10 +120,11 @@ uint8_t* _rigid_field_pointers[_rigid_numFields] =	{	(uint8_t*) &board_id,	(uint
 														PTR2(rigid1.ex.ctrl.current.setpoint_val), PTR2(rigid1.ctrl.step_energy),					// CONTROLLER		2 34
 														PTR2(rigid1.ctrl.walkingState), PTR2(rigid1.ctrl.gaitState),								// CONTROLLER		2 36
 #elif (defined DLEG_MULTIPACKET)
-														PTR2(act1.intJointAngleDegrees), PTR2(act1.intJointVelDegrees), PTR2(act1.intJointTorque),	// INT ACTUATOR		3 31
-														PTR2(act1.safetyFlag), PTR2(act1.desiredJointAngleDeg), PTR2(act1.desiredJointK) , PTR2(act1.desiredJointB),	// ACTUATOR			4 35
+														PTR2(act1.intJointAngleDegrees), PTR2(act1.intCrankVel), PTR2(act1.intJointTorque),	// INT ACTUATOR		3 31
+														PTR2(act1.intTauDes), PTR2(act1.desiredJointAngleDeg), PTR2(act1.desiredJointK) , PTR2(act1.desiredJointB),	// ACTUATOR			4 35
 														PTR2(emg_data[0]), PTR2(emg_data[1]), PTR2(emg_data[2]), PTR2(emg_data[3]), PTR2(emg_data[4]),	// EMG				5 40
 														PTR2(emg_data[5]), PTR2(emg_data[6]), PTR2(emg_data[7])										// EMG				3 43
+														PTR2(act1.intCrankAngleDegrees), PTR2(act1.axialForce)										//2dof ankle		2 45
 #endif
 };
 

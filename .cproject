@@ -578,10 +578,12 @@
 									<listOptionValue builtIn="false" value="../flexsea-projects/MIT_2DoF_Ankle_v1/inc"/>
 									<listOptionValue builtIn="false" value="../flexsea-projects/RICNU_Knee_v1/inc"/>
 									<listOptionValue builtIn="false" value="../flexsea-projects/Rigid/inc"/>
+									<listOptionValue builtIn="false" value="/home/odroid/biomech_darpaTransfemoral/biomech_FlexSEA-Stack-SharedLib/flexsea-projects/Rigid"/>
 									<listOptionValue builtIn="false" value="../flexsea-projects/MIT_DLEG/inc"/>
+									<listOptionValue builtIn="false" value="../flexsea-projects/MIT_PocketClimbing"/>
+									<listOptionValue builtIn="false" value="../flexsea-projects/inc"/>
 									<listOptionValue builtIn="false" value="../flexsea-system/inc"/>
 									<listOptionValue builtIn="false" value="../flexsea-shared/unity"/>
-									<listOptionValue builtIn="false" value="../flexsea-projects/inc"/>
 								</option>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.516425196" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="BUILD_SHARED_LIB_DLL"/>
@@ -649,16 +651,19 @@
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.so.release.1164911303.1729481773.1319251508;cdt.managedbuild.config.gnu.mingw.so.release.1164911303.1729481773.1319251508.;cdt.managedbuild.tool.gnu.cross.c.compiler.359838556;cdt.managedbuild.tool.gnu.c.compiler.input.972128917">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.so.debug.156940721;cdt.managedbuild.config.gnu.mingw.so.debug.156940721.;cdt.managedbuild.tool.gnu.c.compiler.mingw.base.510846859;cdt.managedbuild.tool.gnu.c.compiler.input.1928086995">
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.so.release.1164911303.1729481773;cdt.managedbuild.config.gnu.mingw.so.release.1164911303.1729481773.;cdt.managedbuild.tool.gnu.cross.c.compiler.1772050269;cdt.managedbuild.tool.gnu.c.compiler.input.1706591466">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.so.release.1164911303.88657880;cdt.managedbuild.config.gnu.mingw.so.release.1164911303.88657880.;cdt.managedbuild.tool.gnu.c.compiler.base.1301631879;cdt.managedbuild.tool.gnu.c.compiler.input.2064773650">
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.so.release.1164911303.1939875437;cdt.managedbuild.config.gnu.mingw.so.release.1164911303.1939875437.;cdt.managedbuild.tool.gnu.c.compiler.base.1394204615;cdt.managedbuild.tool.gnu.c.compiler.input.747263557">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.so.debug.156940721;cdt.managedbuild.config.gnu.mingw.so.debug.156940721.;cdt.managedbuild.tool.gnu.c.compiler.mingw.base.510846859;cdt.managedbuild.tool.gnu.c.compiler.input.1928086995">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.so.release.1164911303;cdt.managedbuild.config.gnu.mingw.so.release.1164911303.;cdt.managedbuild.tool.gnu.c.compiler.mingw.so.release.2041746294;cdt.managedbuild.tool.gnu.c.compiler.input.292330747">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.so.release.1164911303.1729481773;cdt.managedbuild.config.gnu.mingw.so.release.1164911303.1729481773.;cdt.managedbuild.tool.gnu.cross.c.compiler.1772050269;cdt.managedbuild.tool.gnu.c.compiler.input.1706591466">
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.so.release.1164911303.88657880;cdt.managedbuild.config.gnu.mingw.so.release.1164911303.88657880.;cdt.managedbuild.tool.gnu.c.compiler.base.1301631879;cdt.managedbuild.tool.gnu.c.compiler.input.2064773650">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
 	</storageModule>
